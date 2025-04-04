@@ -86,7 +86,7 @@ class Entidade {
         }
     }
 
-const raqueteinsana = new Raqueteinsana (canvas.width / 2 - 50, canvas.height - 30, 100, 20, 'red')
+const raqueteinsana = new Raqueteinsana (canvas.width / 2 - 50, canvas.height - 30, 100, 30, 'red')
 const bola = new Bolarebimbante (canvas.width / 2, canvas.height / 2, 8, 'white', 4, -4)
 console.log ("raquete criada", raqueteinsana)
 function loop () {
