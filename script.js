@@ -6,15 +6,15 @@ const teclaspressionadas = {
     KeyD:  false
 };
 document.addEventListener('keydown', (e) => {
-    for (let tecla in teclaspressionadas) {
         if(teclaspressionadas.hasOwnProperty(e.code)){
-            teclaspressionadas[tecla] = true;
+            teclaspressionadas[e.code] = true;
         }
-    }
-    if (teclaspressionadas.hasOwnProperty(e.code)) {
-        teclaspressionadas[e.code] = false;
-    }
-});
+    })
+    document.addEventListener('keyup', (e) => {
+        if(teclaspressionadas.hasOwnProperty(e.code)){
+            teclaspressionadas[e.code] = false;
+        }
+    })
 
 class Entidade {
     constructor (x, y, largura, altura, cor){
@@ -58,6 +58,7 @@ class Entidade {
             this.cor = cor
             this.dx = dx
             this.dy = dy
+            this.viva = true
         }
         desenhar() {
             ctx.beginPath();
@@ -66,7 +67,8 @@ class Entidade {
             ctx.fill();
             ctx.closePath();
         }
-        atualizar (raqueteinsana){
+        atualizar (raqueteinsana, blocos){
+            if (!this.viva) return;
             this.x += this.dx;
             this.y += this.dy;
 
@@ -80,6 +82,7 @@ class Entidade {
                 this.dy *= -1;
                 this.y = raqueteinsana.y - this.raio
             }
+
         }
     }
 
